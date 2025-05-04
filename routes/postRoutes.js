@@ -8,7 +8,7 @@ router.get('/:id', postController.getPostById);
 
 router.post('/', verify, postController.createPost);
 router.put('/:id', verify, postController.updatePost);
-router.delete('/:id', verify, postController.deletePost);
+router.delete('/:id', verify, verifyAdmin, postController.deletePost);
 
 // Admin override
 router.delete('/:id/admin', verify, verifyAdmin, postController.adminDeletePost);

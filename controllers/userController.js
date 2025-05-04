@@ -71,7 +71,7 @@ module.exports.getUserDetails = (req, res) => {
 	const userId = req.user.id;
 
 	User.findById(userId)
-		.select('_id username email') // optional: limit fields
+		.select('_id username email isAdmin') // Add isAdmin here
 		.then(user => {
 			if (!user) {
 				return res.status(404).send({ error: 'User not found' });
@@ -81,6 +81,7 @@ module.exports.getUserDetails = (req, res) => {
 		})
 		.catch(error => errorHandler(error, req, res));
 };
+
 
 
 
