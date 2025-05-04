@@ -71,15 +71,17 @@ module.exports.getUserDetails = (req, res) => {
 	const userId = req.user.id;
 
 	User.findById(userId)
-	.then(user => {
-		if(!user) {
-			return res.status(404).send({ error: 'User not found' });
-		} else {
-			return res.status(200).send({ user: user});
-		}
-	})
-	.catch(error => errorHandler(error, req, res))
+		.select('_id username email') // optional: limit fields
+		.then(user => {
+			if (!user) {
+				return res.status(404).send({ error: 'User not found' });
+			}
+			// ✅ send the user object directly
+			return res.status(200).send(user);
+		})
+		.catch(error => errorHandler(error, req, res));
 };
+
 
 
 
