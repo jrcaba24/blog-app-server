@@ -21,7 +21,7 @@ const port = 3000;
 const corsOptions = {
     origin: [
         'http://localhost:3000',
-        'https://blog-app-client-pied.vercel.app/'
+        'https://blog-app-client-pied.vercel.app'
     ],
     credentials: true,
     optionsSuccessStatus: 200
